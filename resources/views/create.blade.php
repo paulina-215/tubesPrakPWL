@@ -25,9 +25,14 @@
       <textarea id="" cols="30" rows="10"  class="input input-bordered w-full max-w-xs text-black-300 " name="resep"></textarea>
   </label>
 <br>
-    <label for="gambar">
-      <h3>gambar</h3>
-      <input type="file" name="gambar" id="gambar">
+    <label for="image">
+      <h3>image</h3>
+        <input type="file" name="image" id="image" class=" form-control @error('image') is-invalid @enderror">
+      @error('image')
+      <div class="invalid-feedback">
+        {{ $massage }}
+      </div>
+      @enderror
     </label>
   {{-- button add --}}
   <button type="submit" class="btn btn-accent" onclick="location.href='{{ route('create')}}'"  >upload</button>

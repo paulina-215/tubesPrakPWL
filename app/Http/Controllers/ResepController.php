@@ -25,21 +25,40 @@ class ResepController extends Controller
         return view('create');
     }
 
+    public function openHome()
+    {
+        return view('home');
+    }
+
 
     public function addResep(Request $request)
     {   
-        return $request->file('gambar')->store('post-gambar');
         
+     
           $validation = $request->validate([
             'nama_resep' => 'required|min:5|max:255',
             'resep'      => 'required|min:5|max:255',
+            'image'      => 'image|file|max:1024|mimes:jpg,jpeg,png',
         ]);
+
+        // if($request->hasFile('image')){
+        //     $request->file('image')->move('post-image/', $request->file('image')->get);
+        // }
+
+
+        // store::disk('public')->put($path, file_get_contents($image));
+
+            // if($request->hasFile('image')){
+            //     $image  =  $request->file('image');
+            //     $image->move(public_path('post-image'), $image_name);
+            // }
+
 
         Resep::create([
             'tanggal' => NOW(),
             'nama_resep' => $validation['nama_resep'],
             'resep'    => $validation['resep'],
-            'gambar'   => $request->gambar,
+            'image'   => $request->image,
             
         ]);
 
@@ -48,17 +67,13 @@ class ResepController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-       
-    }
-
+   
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        return 'cepat lah siap';
+
     }
 
     /**
@@ -88,8 +103,10 @@ class ResepController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function deleteResep(Request $request)
     {
-        //
+        Resep::where('id', $request->id)->delete();
+        
+        return redirect('/home');
     }
 }

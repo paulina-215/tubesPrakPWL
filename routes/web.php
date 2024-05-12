@@ -21,6 +21,7 @@ use App\Http\Controllers\ResepController;
 
 
  
+Route::get('/', function () { return view('dashboard');   });
 
 Route::get('/home', [ResepController::class, 'index']);
 
@@ -29,8 +30,8 @@ Route::get('/create', [ResepController::class, 'indexAdd'])->name('create');
 
 Route::post('/tambahResep', [ResepController::class, 'addResep']);
 
+Route::delete('/deleteResep/{id}', [ResepController::class, 'deleteResep']);
 
-Route::get('/', function () { return view('dashboard');   });
 
 
 // Route::get('/', function () {

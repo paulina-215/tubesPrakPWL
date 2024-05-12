@@ -17,9 +17,9 @@
   @yield('content')
   {{-- akhir content --}}
 
-  {{-- foother --}}
+  {{-- footer --}}
   @include('layouts.footer')
-  {{-- akhir foother --}}
+  {{-- akhir footer --}}
 
 
 </body>

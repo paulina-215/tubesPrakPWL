@@ -16,15 +16,15 @@ class resep extends Model
         'tanggal',
         'nama_resep',
         'resep',
-        'gambar'
+        'image'
     ]; // Jika tidak di tulis dia tidak akan memperbolehkan kita untuk mengisi data dari model ke database pada kolom tanggal dan task.
 
-    public function tambahResep($id ,$tanggal, $nama_resep, $resep, $gambar){
+    public function tambahResep($id ,$tanggal, $nama_resep, $resep, $image){
         $this->id=  $id;
         $this->tanggal= $tanggal;
         $this->nama_resep= $nama_resep;
         $this->resep= $resep;
-        $this->gambar= $gambar;
+        $this->image= $image;
         $this->save();
     }   
 

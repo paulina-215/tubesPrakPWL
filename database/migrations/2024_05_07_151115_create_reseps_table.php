@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->string('nama_resep');
             $table->text('resep');
-            $table->string('gambar');
+            $table->string('image');
         });
     }
 
